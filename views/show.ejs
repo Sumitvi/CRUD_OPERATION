@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS DATA</title>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Total Users Are</h1>
+  
+
+  
+
+    <p><%= result[0].ID %></p>
+    <p><%= result[0].USERNAME %></p>
+    <p><%= result[0].EMAIL %></p>
+  
+
+
+    <form action="" method="post">
+
+        <td><Button>ADD USER</Button></td>
+       </form>
+       <br><br><br>
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+        </tr>
+
+        
+       <% for(user of result){  %>
+        <tr>
+           
+            <td><%= user.ID %></td>
+            <td><%= user.USERNAME  %></td>
+            <td><%= user.EMAIL  %></td>
+           <form action="/user/<%= user.ID%>/edit" method="get">
+
+            <td><Button>UPDATE</Button></td>
+           </form>
+           <form action="/user/<%= user.ID  %>?_method = DELETE" method="post">
+
+            <td><Button>DELETE</Button></td>
+           </form>
+           
+
+
+
+        </tr>
+   <%  } %>
+      </table>
+
+    
+</body>
+</html>
